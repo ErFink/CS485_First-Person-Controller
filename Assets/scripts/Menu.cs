@@ -18,10 +18,10 @@ public class Menu : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		if(GUI.Button(new Rect(origin_x, origin_y, buttonWidth, buttonHeight), "Scene 1")) {
+		if(GUI.Button(new Rect(origin_x, origin_y, buttonWidth, buttonHeight), "First Person")) {
 			Application.LoadLevel(1);
 		}
-		if(GUI.Button(new Rect(origin_x, origin_y + buttonHeight + 10, buttonWidth, buttonHeight), "Scene 2")) {
+		if(GUI.Button(new Rect(origin_x, origin_y + buttonHeight + 10, buttonWidth, buttonHeight), "Locked Camera")) {
 			Application.LoadLevel(2);
 		}
 		if(GUI.Button(new Rect(origin_x, origin_y + buttonHeight * 2 + 20, buttonWidth, buttonHeight), "Exit")) {

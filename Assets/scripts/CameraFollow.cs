@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour {
 
+	public float rotationSensitivity = 5;
 	public Transform target;
 	private Vector3 offset;
 
@@ -13,6 +14,7 @@ public class CameraFollow : MonoBehaviour {
 	private float rotationY = -30f;
 	private float rotationX = 0f;
 	private float zoomInOutSpeed = 20f;
+	private float speed = 5.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,8 +28,10 @@ public class CameraFollow : MonoBehaviour {
 		transform.position = target.position + offset;
 
 		/* Camera rotation */
-		rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * rotationSpeed;
-		rotationY += Input.GetAxis("Mouse Y") * rotationSpeed;
+		Vector3 v3 = new Vector3(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal"), 0.0f);
+		transform.Rotate(v3 * speed * Time.deltaTime); 
+		rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * rotationSpeed * rotationSensitivity;
+		rotationY += Input.GetAxis("Mouse Y") * rotationSpeed * rotationSensitivity;
 		rotationY = Mathf.Clamp(rotationY, minY, maxY);
 		transform.localEulerAngles = new Vector3(-rotationY, rotationX, 0);
 
